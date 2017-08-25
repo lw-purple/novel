@@ -5,14 +5,16 @@ import App from './App'
 import router from './router'
 import "./config/rem"
 import FastClick from 'fastclick'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-default/index.css'
 if ('addEventListener' in document) {
     document.addEventListener('DOMContentLoaded', function() {
         FastClick.attach(document.body);
     }, false);
 }
 Vue.config.productionTip = false
-
-/* eslint-disable no-new */
+Vue.use(ElementUI)
+    /* eslint-disable no-new */
 new Vue({
     el: '#app',
     router,
