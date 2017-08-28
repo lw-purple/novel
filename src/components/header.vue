@@ -1,8 +1,10 @@
 <template>
     <div>
-        <el-menu theme="light" class="el-menu-demo" mode="horizontal" router @select="handleSelect">
-            <el-menu-item v-for="item in data" :index="item.path" :key="item.name">{{item.name}}</el-menu-item>
-        </el-menu>
+        
+                <el-menu theme="light" class="el-menu-demo" mode="horizontal" router @select="handleSelect">
+                    <el-menu-item v-for="item in data" :index="item.path" :key="item.name">{{item.name}}</el-menu-item>
+                </el-menu>
+       
     </div>
 </template>
 <script>

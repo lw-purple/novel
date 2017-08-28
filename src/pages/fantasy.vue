@@ -9,7 +9,7 @@
     name: "Fantasy",
     data () {
         return {
-
+            title:''
 
         };
     }

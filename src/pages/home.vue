@@ -1,14 +1,22 @@
 <template>
-   <div>home</div>
+   <div>
+       我是主页
+   </div>
+
 </template>
 <script>
 export default {
-   name: "component_name",
+   name: "Home",
    data() {
       return {
 
 
       };
+   },
+   components:{
+   },
+   created(){
+       console.log(this.$route.path.slice(1))
    }
 }
 </script>

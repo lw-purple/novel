@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-const header = r => { return require.ensure([], () => r(require('@/components/header')), 'header') }
+const layout = r => { return require.ensure([], () => r(require('@/pages/layout')), 'layout') }
 const home = r => { return require.ensure([], () => r(require('@/pages/home')), 'home') }
 const fantasy = r => { return require.ensure([], () => r(require('@/pages/fantasy')), 'fantasy') }
 const xiuzhen = r => { return require.ensure([], () => r(require('@/pages/xiuzhen')), 'xiuzhen') }
@@ -9,63 +9,71 @@ const history = r => { return require.ensure([], () => r(require('@/pages/histor
 const other = r => { return require.ensure([], () => r(require('@/pages/other')), 'other') }
 Vue.use(Router)
 
-export default new Router({
+
+let router = new Router({
     mode: 'history',
+    linkActiveClass: 'is-active',
     routes: [{
-            path: '/',
-            redirect: '/home'
-        },
-        {
-            path: '/home',
-            name: 'Home',
-            components: {
-                header: header,
-                default: home
-            }
-        },
-        {
-            path: '/fantasy',
-            name: 'Fantasy',
-            components: {
-                header: header,
-                default: fantasy
-            }
-        },
-        {
-            path: '/xiuzhen',
-            name: 'Xiuzhen',
-            components: {
-                header: header,
-                default: xiuzhen
-            }
-        },
-        {
-            path: '/urban',
-            name: 'Urban',
-            components: {
-                header: header,
-                default: urban
-            }
-        },
-        {
-            path: '/history',
-            name: 'History',
-            components: {
-                header: header,
-                default: history
-            }
-        },
-        {
-            path: '/other',
-            name: 'Other',
-            components: {
-                header: header,
-                default: other
-            }
-        },
-        {
-            path: '*',
-            redirect: '/'
-        }
-    ]
+        path: '/',
+        name: 'Layout',
+        component: layout,
+        children: [{
+                path: '/home',
+                name: 'Home',
+                component: home,
+                meta: {
+                    login: false
+                }
+            },
+            {
+                path: '/fantasy',
+                name: 'Fantasy',
+                component: fantasy,
+                meta: {
+                    login: false
+                }
+            },
+            {
+                path: '/xiuzhen',
+                name: 'Xiuzhen',
+                component: xiuzhen,
+                meta: {
+                    login: false
+                }
+            },
+            {
+                path: '/urban',
+                name: 'Urban',
+                component: urban,
+                meta: {
+                    login: false
+                }
+            },
+            {
+                path: '/history',
+                name: 'History',
+                component: history,
+                meta: {
+                    login: false
+                }
+            },
+            {
+                path: '/other',
+                name: 'Other',
+                component: other,
+                meta: {
+                    login: true
+                }
+            },
+        ]
+    }]
 })
+router.beforeEach((to, from, next) => {
+    let bl = to.matched.some((item) => {
+        return item.meta.login
+    })
+    console.log(bl)
+    next()
+})
+
+export default router
