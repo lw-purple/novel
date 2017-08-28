@@ -1,12 +1,17 @@
 <template>
     <div >
         <hot-book :books="books" ></hot-book>
-        <div>asdfa</div>
+        <div class="book_body">
+            <left-book></left-book>
+        <right-book></right-book>
+        </div>
     </div>
 </template>
 <script>
 import hotBook from '../components/hotbook'
 import Logo from '../assets/logo.png'
+import leftBook from '../components/left'
+import rightBook from '../components/right'
 export default {
     name: "Home",
     data() {
@@ -52,13 +57,17 @@ export default {
         };
     },
     components: {
-        hotBook
+        hotBook,leftBook,rightBook
     },
     created() {
         console.log(this.$route.path.slice(1))
+        console.log(this)
     }
 }
 </script>
 <style lang="scss" scoped>
-
+.book_body{
+  display:flex;
+  justify-content: space-between;
+}
 </style>

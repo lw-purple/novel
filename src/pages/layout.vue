@@ -1,17 +1,9 @@
 <template>
-    <div>
-        <el-row>
-            <el-col :span="20" :offset="2">
-                <header-top></header-top>
-            </el-col>
-        </el-row>
-        <el-row>
-            <el-col :span="20" :offset="2">
-                <transition name="fade" mode="out-in">
-                    <router-view></router-view>
-                </transition>
-            </el-col>
-        </el-row>
+    <div style="width:980px;margin:0 auto">
+        <header-top></header-top>
+        <transition name="fade" mode="out-in">
+            <router-view></router-view>
+        </transition>
        
     </div>
 </template>
