@@ -18,10 +18,11 @@ let router = new Router({
         name: 'Layout',
         component: layout,
         children: [{
-                path: '/home',
+                path: '',
                 name: 'Home',
                 component: home,
                 meta: {
+                    title: '首页',
                     login: false
                 }
             },
@@ -30,6 +31,7 @@ let router = new Router({
                 name: 'Fantasy',
                 component: fantasy,
                 meta: {
+                    title: '玄幻',
                     login: false
                 }
             },
@@ -38,6 +40,7 @@ let router = new Router({
                 name: 'Xiuzhen',
                 component: xiuzhen,
                 meta: {
+                    title: '修真',
                     login: false
                 }
             },
@@ -46,6 +49,7 @@ let router = new Router({
                 name: 'Urban',
                 component: urban,
                 meta: {
+                    title: '都市',
                     login: false
                 }
             },
@@ -54,6 +58,7 @@ let router = new Router({
                 name: 'History',
                 component: history,
                 meta: {
+                    title: '历史',
                     login: false
                 }
             },
@@ -62,6 +67,7 @@ let router = new Router({
                 name: 'Other',
                 component: other,
                 meta: {
+                    title: '其他',
                     login: true
                 }
             },
@@ -72,8 +78,11 @@ router.beforeEach((to, from, next) => {
     let bl = to.matched.some((item) => {
         return item.meta.login
     })
-    console.log(bl)
     next()
 })
-
+router.afterEach((to, from, next) => {
+    document.title = to.meta.title
+    console.log(to)
+    console.log(from)
+})
 export default router

@@ -1,5 +1,5 @@
 <template>
-    <div style="min-height:400px;border:2px solid #999;overflow:hidden">
+    <div class="media_wrap">
         <router-link :to="{path:'/book/'+book.id}" tag="li" v-for="book in books" :key="book.id">
             <div class="media">
                 <div class="media_left">
@@ -35,13 +35,21 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.media_wrap {
+    min-height: 310px;
+    border: 2px solid #999;
+    overflow: hidden
+}
+li{
+    cursor: pointer;
+}
 .media {
     width: 33%;
     display: flex;
     float: left;
-    height: 200px;
+    height: 155px;
     .media_left {
-        padding: 2px;
+        padding: 8px;
         width: 30%;
         img {
             max-width: 100%;

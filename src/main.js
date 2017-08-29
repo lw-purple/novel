@@ -8,7 +8,8 @@ import FastClick from 'fastclick'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import Utile from './lib/utils'
-
+import Axios from 'axios'
+import VueAxios from 'vue-axios'
 if ('addEventListener' in document) {
     document.addEventListener('DOMContentLoaded', function() {
         FastClick.attach(document.body);
@@ -17,6 +18,7 @@ if ('addEventListener' in document) {
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(Utile)
+Vue.use(VueAxios, Axios)
     /* eslint-disable no-new */
 new Vue({
     el: '#app',
