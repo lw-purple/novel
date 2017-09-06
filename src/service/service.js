@@ -30,14 +30,14 @@ HTTP.interceptors.request.use(function(config) {
     return Promise.reject(error);
 });
 
-export default function get(url, params = {}) {
+export default function get(url, params = { cancelToken: source.token }) {
     return HTTP.get(url, params).catch(error => {
         if (axios.isCancel(error)) {
             console.log(error.message);
-            source.cancel('操作被用户取消,因为时间太长了')
         } else {
             console.log(error)
         }
     })
+    source.cancel('操作被用户取消,因为时间太长了')
 
 }

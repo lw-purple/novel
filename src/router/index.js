@@ -7,6 +7,7 @@ const xiuzhen = r => { return require.ensure([], () => r(require('@/pages/xiuzhe
 const urban = r => { return require.ensure([], () => r(require('@/pages/urban')), 'urban') }
 const history = r => { return require.ensure([], () => r(require('@/pages/history')), 'history') }
 const other = r => { return require.ensure([], () => r(require('@/pages/other')), 'other') }
+const book = r => { return require.ensure([], () => r(require('@/pages/book')), 'book') }
 Vue.use(Router)
 
 
@@ -70,7 +71,11 @@ let router = new Router({
                     title: '其他',
                     login: true
                 }
-            },
+            }, {
+                path: '/:id',
+                name: "Book",
+                component: book
+            }
         ]
     }]
 })
@@ -81,8 +86,6 @@ router.beforeEach((to, from, next) => {
     next()
 })
 router.afterEach((to, from, next) => {
-    document.title = to.meta.title
-    console.log(to)
-    console.log(from)
+    to.meta.title ? document.title = to.meta.title : document.title = to.query.title
 })
 export default router

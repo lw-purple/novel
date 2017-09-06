@@ -1,6 +1,6 @@
 <template>
     <div class="media_wrap">
-        <router-link :to="{path:'/book/'+book.id}" tag="li" v-for="book in books" :key="book.id">
+        <router-link :to="{path:'/'+book.id,query:{title:book.name}}" tag="li" v-for="book in books" :key="book.id">
             <div class="media">
                 <div class="media_left">
                     <img :src="book.img" alt="图片">

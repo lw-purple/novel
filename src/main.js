@@ -10,16 +10,19 @@ import 'element-ui/lib/theme-default/index.css'
 import Utile from './lib/utils'
 import Axios from 'axios'
 import VueAxios from 'vue-axios'
+import echarts from 'echarts'
 if ('addEventListener' in document) {
     document.addEventListener('DOMContentLoaded', function() {
         FastClick.attach(document.body);
     }, false);
 }
 Vue.config.productionTip = false
+Vue.prototype.$echarts = echarts
 Vue.use(ElementUI)
 Vue.use(Utile)
 Vue.use(VueAxios, Axios)
-    /* eslint-disable no-new */
+
+/* eslint-disable no-new */
 new Vue({
     el: '#app',
     router,
